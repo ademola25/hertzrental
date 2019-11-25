@@ -24,7 +24,7 @@ class TripRequest extends FormRequest
     public function rules()
     {
         return [
-            'email_address' => 'required|email',
+            'email_address' => 'required',
             'passenger_names' => 'required',
             'passenger_phone_numbers' => 'required|min:15|numeric',
             'departure' => 'required:max:30',
@@ -35,7 +35,7 @@ class TripRequest extends FormRequest
             'vehicle_type' => 'required',
             'vehicle_make' => 'required',
             'pickup_street' => 'required',
-            'actual_street' => 'required',
+            'actual_street' => 'required'
         ];
     }
 }

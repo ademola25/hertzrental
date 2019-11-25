@@ -44,26 +44,6 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        if($request->expectsJSON()){
-           if($exception instanceof ModelNotFoundException){
-               
-               return response()->json([
-                   'errors' => 'Model not found'
-               ], 404);
-           }
-       }
-       
-       if($request->expectsJSON()){
-           if($exception instanceof NotFoundHttpException){
-               
-               return response()->json([
-                   'errors' => 'Incorrect Route'
-               ], Response::HTTP_NOT_FOUND);
-           }
-       }
-       
-        return parent::render($request, $exception);
-    }
+    
+   
 }

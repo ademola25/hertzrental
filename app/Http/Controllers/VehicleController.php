@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Trips;
+use App\Model\Vehicle;
 use Illuminate\Http\Request;
-use DB;
+use App\Http\Resources\Vehicle\VehicleCollection;
+use App\Http\Resources\Vehicle\VehicleResource;
 
-class TripsController extends Controller
+class VehicleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +22,12 @@ class TripsController extends Controller
         $data = $success->getData();
         $cid = $data->cid;
 
-        $Trips = DB::table('direct_bookings')->where('company_id', $cid)->get();
-        if($Trips){
-            return response()->json(["success" => $Trips]);  //TripResource::collection($getResult) 
+        $getVehicles = Vehicle::where("cid", $cid)->get();
+        
+        if($getVehicles){
+            return response()->json(["success" => VehicleCollection::collection($getVehicles)]);  //TripResource::collection($getResult) 
         }else{
-            return response()->json(["error" => "No Trips Found" ]); 
+            return response()->json(["error" => "No Driver Found" ]); 
         }
     }
 
@@ -53,10 +55,10 @@ class TripsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Trips  $trips
+     * @param  \App\Model\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function show(Trips $trips)
+    public function show(Vehicle $vehicle)
     {
         //
     }
@@ -64,10 +66,10 @@ class TripsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Trips  $trips
+     * @param  \App\Model\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trips $trips)
+    public function edit(Vehicle $vehicle)
     {
         //
     }
@@ -76,10 +78,10 @@ class TripsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Trips  $trips
+     * @param  \App\Model\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trips $trips)
+    public function update(Request $request, Vehicle $vehicle)
     {
         //
     }
@@ -87,10 +89,10 @@ class TripsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Trips  $trips
+     * @param  \App\Model\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trips $trips)
+    public function destroy(Vehicle $vehicle)
     {
         //
     }

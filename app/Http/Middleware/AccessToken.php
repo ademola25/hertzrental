@@ -24,8 +24,11 @@ class AccessToken
         $b = new Functions();
         $success = $b::checkAccess($cookie);
         $data = $success->getData();
-      //dd($data->token);
-        if($data->token == null){
+        if(isset($data->error)){
+            unset($_COOKIE['access_token']);
+            return redirect('/'); 
+        }else if(isset($data->email) && $data->email == null){
+            unset($_COOKIE['access_token']);
              return redirect('/');
         }
         return $next($request);

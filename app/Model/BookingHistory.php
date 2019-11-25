@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookingHistory extends Model
 {
+    protected  $table = "direct_bookings";
     
 }

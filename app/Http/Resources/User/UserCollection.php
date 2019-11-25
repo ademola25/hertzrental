@@ -20,6 +20,7 @@ class UserCollection extends Resource
             'name' => $this->name,
             'email' => $this->email,
             'cid' => $this->cid,
+            'designation' => $this->designation,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

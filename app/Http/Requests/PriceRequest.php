@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookingRequest extends FormRequest
+class PriceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class BookingRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+         return true;
     }
 
     /**
@@ -22,15 +22,17 @@ class BookingRequest extends FormRequest
      * @return array
      */
     
+    
     public function rules()
     {
         return [
-            'username' => 'required',
-            'phone' => 'required',
-            'pickup_address' => 'required',
-            'pick_up_date' => 'required',
-            'dropoff_address' => 'required',
-            'end_date' => 'required',  
+            'service_type' => 'required',
+            'departure' => 'required',
+            'destination' => 'required',
+            'vehicle_type' => 'required',
+            'vehicle_make' => 'required',
+            'pickup_date' => 'required',
+            'end_date' => 'required',
         ];
     }
 }

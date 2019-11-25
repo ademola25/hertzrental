@@ -63,15 +63,15 @@ function loginAction(){
           })
             return;
         }
-        
+       
         
         $.ajax({
             type: "POST",
-            url: "http://localhost:8000/api/mlogin",
-           /*  headers: {
+            url: GLOBALS.appRoot + "api/mlogin",
+            //url: "http://demo.c-ileasing.com/hertzrental/api/mlogin",
+           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            } */
-            
+            },
             data: { email: email, password: password, checkmein: checkmein },
             dataType: "JSON",
             
@@ -83,7 +83,7 @@ function loginAction(){
 }
  function loginSuccess(returnedData, status) {
         
-        if (typeof returnedData !== 'object' || typeof returnedData.success !== 'number') {
+        if (typeof returnedData !== 'object') {
             Swal.fire({
             icon: 'error',
             title: 'Error processing Request!',
@@ -95,7 +95,8 @@ function loginAction(){
             return;
         }
 
-        if(returnedData.success == 200){
+       
+        if(returnedData.success){
             Swal.fire({
                 position: 'top-end',
                 icon: 'Success',
@@ -106,16 +107,9 @@ function loginAction(){
             //alert(returnedData.access_token);
             $('#userEmail').val('');
             $('#userPassword').val('');
-           // document.cookie = 'access_token='+returnedData.Authorization+'; expires='+ new Date(2020, 0, 1).toUTCString() + ' ';
-           
-        /* headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            'Authorization': returnedData.Authorization,
-            'Content-Type':'application/json'
-            }, */
-       
-            location.assign(GLOBALS.appRoot + 'api/dashboard');
+            //document.cookie = 'access_token='+returnedData.success+'; expires='+ new Date(2020, 0, 1).toUTCString() + ' ';
             
+            location.assign(GLOBALS.appRoot + 'api/dashboard'); 
           // console.log(document.cookie);
         }else{
            

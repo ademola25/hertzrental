@@ -20,8 +20,8 @@ class TripResource extends JsonResource
             'passenger_phone_numbers' => $this->passenger_phone_numbers,
             'departure' => $this->departure,
             'destination' => $this->destination,
-            'pick_up_date' => $this->pick_up_date,
-            'end_date' => $this->end_date,
+            'pick_up_date' => $this->pick_up_date. ' '.$this->pickup_time,
+            'end_date' => $this->end_date.' '.$this->end_time,
             'pickup_street' => $this->pickup_street,
             'actual_street' => $this->actual_street,
             'vehicle_make' => $this->vehicle_make,
@@ -31,6 +31,8 @@ class TripResource extends JsonResource
             'price' => $this->price,
             'total_cost' => $this->total_cost,
             'trip_status' => $this->trip_status,
+             'logged_by' => $this->logged_by,
+             'driver' => $this->driver,
            
         ];
     }

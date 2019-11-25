@@ -19,6 +19,18 @@ GLOBALS = {
 };
 
 
+function getJSON(url, callback){
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function(){
+        if(xhr.status === 200){
+            callback(xhr.response);
+        }
+    }
+    xhr.send();
+            
+}
 
 function shuffleArray(response){
     for(var x = response.length - 1; x > 0; x--){
